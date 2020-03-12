@@ -1,0 +1,46 @@
+{
+  "name": "use-stream-state",
+  "version": "0.0.8",
+  "description": "use rxjs with react hooks",
+  "bugs": {
+    "url": "https://github.com/butifly/use-stream-state/issues"
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "rm -rf dist/esm && tsc -p tsconfig.json --module es2015 --target es5 --outDir dist/esm",
+    "build:cjs": "rm -rf dist/cjs && tsc -p tsconfig.json --module commonjs --target es5 --outDir dist/cjs",
+    "deploy": "npm run build && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist"
+  ],
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/cjs/index.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "rxjs",
+    "hooks",
+    "react",
+    "react-hooks"
+  ],
+  "author": "juyeong1260",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/butifly/use-stream-state",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "rxjs": "^6.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.5",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "use-constant": "^1.0.0"
+  }
+}

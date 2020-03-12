@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# testing
+/coverage
+
+# production
+.next/
+
+# misc
+.env
+.env.*
+.idea/
+.vscode/
+npm-debug.log*
+.DS_Store
+
+# Stackdriver credential files
+hakuna-*.json
+gcp_service_account.json
+
+# Local cert
+local-server.cert
+local-server.key
+
+dist/
