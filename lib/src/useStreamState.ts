@@ -16,7 +16,7 @@ export function useStreamState<State, EventValue = State, Inputs = void>(
   initialState: State,
   callback: EventCallback<EventValue, State, Inputs>,
   inputs?: RestrictArray<Inputs>,
-): [State, (e: EventValue) => void, (s: State) => void] {
+): [State, (e: EventValue) => void, (s: State | ((prevState: State) => State)) => void] {
 
   const [state, setState] = useState<State>(initialState);
   const event$ = useConstant(() => new Subject<EventValue>());
@@ -28,9 +28,10 @@ export function useStreamState<State, EventValue = State, Inputs = void>(
     return event$.next(e);
   }
   const returnedCallback = useCallback(eventCallback, []);
-  const justSetState = useCallback((state: State) => {
-    state$.next(state);
-    setState(state);
+  const justSetState = useCallback((next: State | ((prevState: State) => State)) => {
+    const nextState = typeof next === 'function' ? (next as ((prevState: State) => State))(state$.value) : next;
+    state$.next(nextState);
+    setState(nextState);
   }, []);
 
   useEffect(() => {
