@@ -1,6 +1,6 @@
 {
   "name": "use-stream-state",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "use rxjs with react hooks",
   "bugs": {
     "url": "https://github.com/butifly/use-stream-state/issues"
